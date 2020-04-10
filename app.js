@@ -1,3 +1,4 @@
+const tasks = require('./routes/tasks')
 const Koa = require('koa')
 const app = new Koa()
 const views = require('koa-views')
@@ -8,7 +9,7 @@ const logger = require('koa-logger')
 require('./store').init()
 const index = require('./routes/index')
 const users = require('./routes/users')
-
+app.use(tasks.routes(), tasks.allowedMethods())
 // error handler
 onerror(app)
 
